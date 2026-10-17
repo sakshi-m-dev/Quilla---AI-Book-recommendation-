@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="quilla-rose-fav" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185" />
+      <stop offset="50%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+  </defs>
+
+  <!-- Vibrant Warm Rose-Pink Rounded Base (Zero Purple) -->
+  <rect width="32" height="32" rx="7.5" fill="url(#quilla-rose-fav)" />
+
+  <!-- Subtle inner ambient rim highlight -->
+  <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="6.75" fill="none" stroke="#ffffff" stroke-opacity="0.28" stroke-width="0.75" />
+
+  <!-- Quilla Open Book Icon in Crisp White -->
+  <g transform="translate(4, 4)" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left open page -->
+    <path d="M3 4.5h6a3.5 3.5 0 0 1 3.5 3.5v11.5a2.5 2.5 0 0 0-2.5-2.5H3z" fill="#ffffff" fill-opacity="0.22" />
+    <!-- Right open page -->
+    <path d="M21 4.5h-6a3.5 3.5 0 0 0-3.5 3.5v11.5a2.5 2.5 0 0 1 2.5-2.5H21z" fill="#ffffff" fill-opacity="0.22" />
+  </g>
+</svg>

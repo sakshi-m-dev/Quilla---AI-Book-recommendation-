@@ -1,0 +1,1281 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================================================
+   QUILLA — Modern Literary AI Companion Design System
+   Warm Cream / Ivory × Subtle Lavender × Refined Charcoal
+================================================================ */
+
+@layer base {
+  :root {
+    /* ── Core Palette (Light Mode: Warm Parchment & Rose) ── */
+    --background:         40 26% 97.5%;     /* warm literary parchment */
+    --foreground:         230 18% 22%;      /* soft deep charcoal */
+
+    --card:               0 0% 100%;
+    --card-foreground:    230 18% 22%;
+
+    --popover:            0 0% 100%;
+    --popover-foreground: 230 18% 22%;
+
+    /* primary = refined rose pink */
+    --primary:            345 68% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    /* secondary = subtle blush/parchment */
+    --secondary:          350 28% 94%;
+    --secondary-foreground: 345 25% 24%;
+
+    --muted:              350 20% 93%;
+    --muted-foreground:   230 10% 50%;
+
+    /* accent = subtle coral/rose */
+    --accent:             345 65% 55%;
+    --accent-foreground:  0 0% 100%;
+
+    --destructive:        0 70% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border:             230 15% 90%;
+    --input:              230 15% 91%;
+    --ring:               345 68% 52%;
+
+    --radius:             0.875rem;
+
+    /* ── Subtle Rose Brand Tokens ── */
+    --rose:               345 68% 52%;
+    --rose-light:         345 45% 94%;
+    --rose-soft:          345 50% 97%;
+    --lavender:           345 68% 52%;
+    --lavender-light:     345 45% 94%;
+    --lavender-soft:      345 50% 97%;
+    --cream:              40 26% 97.5%;
+    --cream-surface:      40 30% 99%;
+    --ink:                230 18% 20%;
+    --ink-muted:          230 10% 48%;
+
+    /* ── Sidebar tokens ── */
+    --sidebar-background:         40 22% 96%;
+    --sidebar-foreground:         230 18% 28%;
+    --sidebar-primary:            345 68% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent:             345 35% 93%;
+    --sidebar-accent-foreground:  345 45% 32%;
+    --sidebar-border:             230 15% 90%;
+    --sidebar-ring:               345 68% 52%;
+  }
+
+  .dark {
+    /* ── Dark Mode: Midnight Library Atmosphere ── */
+    --background:         250 14% 9.5%;     /* deep velvety charcoal-plum */
+    --foreground:         40 22% 93%;       /* warm soft cream */
+
+    --card:               250 14% 13%;      /* lighter charcoal surface */
+    --card-foreground:    40 22% 93%;
+
+    --popover:            250 14% 13%;
+    --popover-foreground: 40 22% 93%;
+
+    /* primary = soft luminous rose pink */
+    --primary:            345 75% 68%;
+    --primary-foreground: 250 25% 10%;
+
+    /* secondary = dark dusty charcoal/plum */
+    --secondary:          250 12% 17%;
+    --secondary-foreground: 40 20% 88%;
+
+    --muted:              250 12% 16%;
+    --muted-foreground:   250 8% 62%;
+
+    --accent:             345 70% 64%;
+    --accent-foreground:  250 25% 10%;
+
+    --destructive:        0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border:             250 12% 20%;
+    --input:              250 12% 20%;
+    --ring:               345 75% 68%;
+
+    /* Brand Tokens in Dark */
+    --rose:               345 75% 68%;
+    --rose-light:         345 25% 20%;
+    --rose-soft:          345 20% 14%;
+    --lavender:           345 75% 68%;
+    --lavender-light:     345 25% 20%;
+    --lavender-soft:      345 20% 14%;
+    --cream:              250 14% 9.5%;
+    --cream-surface:      250 14% 13%;
+    --ink:                40 22% 93%;
+    --ink-muted:          250 8% 65%;
+
+    --sidebar-background:         250 14% 11%;
+    --sidebar-foreground:         40 20% 88%;
+    --sidebar-primary:            345 75% 68%;
+    --sidebar-primary-foreground: 250 25% 10%;
+    --sidebar-accent:             250 12% 17%;
+    --sidebar-accent-foreground:  345 75% 72%;
+    --sidebar-border:             250 12% 20%;
+    --sidebar-ring:               345 75% 68%;
+  }
+}
+
+/* Smooth Theme Switching Transition */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 250ms ease, border-color 250ms ease, color 250ms ease, fill 250ms ease, stroke 250ms ease, box-shadow 250ms ease !important;
+}
+
+/* ================================================================
+   BASE RESET & TYPOGRAPHY
+================================================================ */
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: hsl(var(--cream));
+  }
+
+  body {
+    @apply text-foreground;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: transparent;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Lora', 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* ================================================================
+   SCROLLBAR
+================================================================ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--foreground) / 0.12);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.35);
+}
+
+/* ================================================================
+   NAVBAR
+================================================================ */
+.navbar-clean {
+  background: hsl(var(--cream) / 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid hsl(var(--border) / 0.45);
+}
+
+/* ================================================================
+   CHAT BUBBLES & MESSAGES
+================================================================ */
+/* User message: compact, refined rose gradient, clean rounded */
+.bubble-user {
+  background: linear-gradient(135deg, hsl(345 68% 54%), hsl(340 62% 48%));
+  color: #ffffff;
+  border-radius: 1.25rem 1.25rem 0.35rem 1.25rem;
+  box-shadow: 0 4px 14px hsl(345 50% 50% / 0.2);
+  animation: messageSlideInUser 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Quilla message: borderless, airy, comfortable reading */
+.assistant-prose {
+  color: hsl(var(--foreground));
+  font-size: 0.9375rem;
+  line-height: 1.68;
+  animation: messageSlideInAssistant 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ================================================================
+   BOOK RECOMMENDATION CARD
+================================================================ */
+.book-rec-card {
+  background: hsl(var(--card) / 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--border) / 0.85);
+  border-radius: 1rem;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.24s ease;
+  box-shadow: 0 2px 8px hsl(var(--foreground) / 0.04),
+              0 1px 2px hsl(var(--foreground) / 0.02);
+  will-change: transform, box-shadow;
+}
+
+.book-rec-card:hover {
+  border-color: hsl(var(--primary) / 0.45);
+  box-shadow: 0 12px 32px hsl(var(--primary) / 0.12),
+              0 3px 8px hsl(var(--primary) / 0.06);
+  transform: translateY(-4px);
+}
+
+/* Book Cover / Spine Placeholder */
+.book-cover-placeholder {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.625rem;
+  box-shadow: 0 3px 10px hsl(var(--foreground) / 0.12);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.book-rec-card:hover .book-cover-placeholder {
+  transform: scale(1.04) translateY(-1px);
+  box-shadow: 0 6px 16px hsl(var(--primary) / 0.22);
+}
+
+/* Sequential Staggered Entrance */
+.animate-book-reveal {
+  animation: bookCardReveal 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ================================================================
+   TBR ACTIONS & PARTICLES
+================================================================ */
+.tbr-action-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid hsl(var(--primary) / 0.3);
+  background: hsl(var(--rose-soft));
+  color: hsl(var(--primary));
+}
+
+.tbr-action-btn:hover:not(:disabled) {
+  background: hsl(var(--rose-light));
+  border-color: hsl(var(--primary) / 0.55);
+  transform: translateY(-0.5px);
+}
+
+.tbr-action-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.tbr-action-btn.saved {
+  background: hsl(152 40% 93%);
+  color: hsl(155 45% 28%);
+  border-color: hsl(152 35% 75%);
+  cursor: default;
+}
+
+/* Particle Sparkle when saving */
+.tbr-sparkle-dot {
+  position: absolute;
+  pointer-events: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  animation: tbrSparkle 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.tbr-save-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.9rem;
+  border-radius: 99px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  color: hsl(var(--muted-foreground));
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.tbr-save-all-btn:hover:not(:disabled) {
+  border-color: hsl(var(--primary) / 0.5);
+  color: hsl(var(--primary));
+  background: hsl(var(--rose-soft));
+  transform: translateY(-1px);
+}
+
+.tbr-save-all-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.tbr-save-all-btn.all-saved {
+  background: hsl(152 40% 93%);
+  color: hsl(155 45% 28%);
+  border-color: hsl(152 35% 75%);
+}
+
+/* ================================================================
+   STAR RATING (Interactive & Bouncy)
+================================================================ */
+.subtle-star-btn {
+  background: none;
+  border: none;
+  padding: 0.12rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: transform 0.14s ease, opacity 0.14s ease;
+  opacity: 0.75;
+}
+
+.subtle-star-btn:hover {
+  transform: scale(1.25);
+  opacity: 1;
+}
+
+.subtle-star-btn:active {
+  transform: scale(0.9);
+}
+
+.star-bounce-anim {
+  animation: starBounce 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Legacy Profile Star Rating */
+.star-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 0.15s ease;
+}
+.star-btn:hover { transform: scale(1.2); }
+
+/* ================================================================
+   SUGGESTION CHIPS (Tactile & Literary)
+================================================================ */
+.suggest-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.34rem 0.8rem;
+  border-radius: 99px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.18s ease,
+              box-shadow 0.18s ease,
+              border-color 0.18s ease;
+  white-space: nowrap;
+  background: hsl(var(--card) / 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid hsl(var(--border) / 0.7);
+  color: hsl(var(--foreground) / 0.85);
+  box-shadow: 0 2px 6px hsl(var(--foreground) / 0.03);
+}
+
+.suggest-chip:hover {
+  background: hsl(var(--rose-light) / 0.85);
+  border-color: hsl(var(--primary) / 0.4);
+  color: hsl(var(--primary));
+  transform: translateY(-1.5px) scale(1.02);
+  box-shadow: 0 4px 12px hsl(var(--primary) / 0.12);
+}
+
+.suggest-chip:active {
+  transform: scale(0.96);
+}
+
+/* Small tag/chip inside recommendation cards */
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.52rem;
+  border-radius: 99px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  background: hsl(var(--muted) / 0.7);
+  border: 1px solid hsl(var(--border) / 0.6);
+  color: hsl(var(--muted-foreground));
+}
+
+/* ================================================================
+   MODERN COMPOSER INPUT
+================================================================ */
+.composer-box {
+  background: hsl(var(--card) / 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid hsl(var(--border) / 0.85);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px hsl(var(--foreground) / 0.05),
+              0 1px 3px hsl(var(--foreground) / 0.02);
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.2s ease;
+}
+
+.composer-box:focus-within {
+  border-color: hsl(var(--primary) / 0.55);
+  box-shadow: 0 8px 30px hsl(var(--primary) / 0.15),
+              0 0 0 3px hsl(var(--primary) / 0.08);
+  transform: translateY(-1px);
+}
+
+.composer-textarea {
+  background: transparent;
+  border: none;
+  color: hsl(var(--foreground));
+  font-family: inherit;
+  font-size: 0.925rem;
+  resize: none;
+  outline: none;
+}
+
+.composer-textarea::placeholder {
+  color: hsl(var(--muted-foreground) / 0.75);
+}
+
+.composer-send-btn {
+  background: hsl(var(--primary));
+  color: #ffffff;
+  border: none;
+  border-radius: 99px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.18s ease,
+              box-shadow 0.18s ease;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.composer-send-btn:hover:not(:disabled) {
+  background: hsl(258 55% 52%);
+  transform: scale(1.08) translateY(-1px);
+  box-shadow: 0 4px 14px hsl(258 50% 50% / 0.3);
+}
+
+.composer-send-btn:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.composer-send-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ================================================================
+   ANIMATIONS & KEYFRAMES
+================================================================ */
+/* Ambient Orbs */
+@keyframes orbFloat1 {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  33%  { transform: translate3d(35px, -45px, 0) scale(1.06); }
+  66%  { transform: translate3d(-25px, 30px, 0) scale(0.96); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes orbFloat2 {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  33%  { transform: translate3d(-40px, 35px, 0) scale(0.94); }
+  66%  { transform: translate3d(30px, -30px, 0) scale(1.05); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes orbFloat3 {
+  0%   { transform: translate3d(0, 0, 0) scale(1); opacity: 0.35; }
+  50%  { transform: translate3d(20px, 40px, 0) scale(1.1); opacity: 0.55; }
+  100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.35; }
+}
+
+.animate-orb-1 {
+  animation: orbFloat1 28s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-orb-2 {
+  animation: orbFloat2 34s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-orb-3 {
+  animation: orbFloat3 24s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Stardust Drift */
+@keyframes stardustDrift {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: var(--max-opacity, 0.45);
+  }
+  80% {
+    opacity: var(--max-opacity, 0.45);
+  }
+  100% {
+    transform: translateY(-80px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.animate-stardust {
+  animation: stardustDrift var(--duration, 8s) ease-in-out infinite;
+}
+
+/* Floating Literary Particle Drift */
+@keyframes literaryDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.9);
+    opacity: 0;
+  }
+  15% {
+    opacity: var(--max-opacity, 0.2);
+  }
+  50% {
+    transform: translate3d(var(--sway, 12px), -55px, 0) scale(1.05);
+    opacity: var(--max-opacity, 0.2);
+  }
+  85% {
+    opacity: var(--max-opacity, 0.2);
+  }
+  100% {
+    transform: translate3d(0, -110px, 0) scale(0.95);
+    opacity: 0;
+  }
+}
+
+.animate-literary-drift {
+  animation: literaryDrift var(--duration, 12s) cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* Interaction Pulses */
+@keyframes sendPulse {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 40px) scale(0.7);
+  }
+  40% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -60px) scale(1.35);
+  }
+}
+
+.animate-send-pulse {
+  animation: sendPulse 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tbrRipple {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  35% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+.animate-tbr-ripple {
+  animation: tbrRipple 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Book Card Sequential Reveal */
+@keyframes bookCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Message Slides */
+@keyframes messageSlideInUser {
+  from {
+    opacity: 0;
+    transform: translateX(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes messageSlideInAssistant {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TBR Collection Sparkles */
+@keyframes tbrSparkle {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx, 16px), var(--ty, -28px)) scale(0.2);
+  }
+}
+
+/* Star Rating Bounce */
+@keyframes starBounce {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.4) rotate(8deg); }
+  70%  { transform: scale(0.92) rotate(-4deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Quilla Book Icon Breathing & Generating */
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+@keyframes iconPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
+  }
+  50% {
+    box-shadow: 0 0 16px 3px hsl(var(--primary) / 0.28);
+  }
+}
+
+@keyframes generatingOrbit {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-icon-idle {
+  animation: iconFloat 4s ease-in-out infinite;
+}
+
+.animate-icon-generating {
+  animation: iconFloat 1.8s ease-in-out infinite, iconPulseGlow 1.8s ease-in-out infinite;
+}
+
+/* Sparkle twinkle for Curated Header */
+@keyframes twinklePulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.25); }
+}
+
+.animate-twinkle {
+  animation: twinklePulse 2.5s ease-in-out infinite;
+}
+
+/* Typing Dots */
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  animation: typingBounce 1.2s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.16s; }
+.typing-dot:nth-child(3) { animation-delay: 0.32s; }
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+  30%            { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ================================================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-orb-1,
+  .animate-orb-2,
+  .animate-orb-3,
+  .animate-stardust,
+  .animate-icon-idle,
+  .animate-icon-generating,
+  .story-fade-in,
+  .animate-sparkle-rise,
+  .animate-book-draw,
+  .quilla-logo-mark,
+  .quilla-logo-icon {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Quilla Logo Book Hover Interaction */
+.quilla-logo-mark {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+.group:hover .quilla-logo-mark {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 4px 14px hsl(258 60% 60% / 0.35);
+}
+.quilla-logo-icon {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.group:hover .quilla-logo-icon {
+  transform: scale(1.15) rotate(4deg);
+}
+
+/* Story Page Atmosphere & Literary Animations */
+@keyframes storyFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.story-fade-in {
+  animation: storyFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes storySparkleRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.6);
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(1.1);
+  }
+}
+
+.animate-sparkle-rise {
+  animation: storySparkleRise 3.5s ease-in-out infinite;
+}
+
+@keyframes bookDrawStroke {
+  0% {
+    stroke-dashoffset: 400;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-book-draw {
+  stroke-dasharray: 400;
+  animation: bookDrawStroke 2s ease-out forwards;
+}
+
+
+/* Legacy Support tokens */
+.genre-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.55rem;
+  border-radius: 99px;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+.chip-lavender, .chip-rose { background: hsl(var(--rose-light)); color: hsl(var(--primary)); }
+.chip-sage { background: hsl(145 30% 92%); color: hsl(145 35% 32%); }
+.chip-coral { background: hsl(15 85% 93%); color: hsl(15 75% 45%); }
+.chip-marigold { background: hsl(38 90% 93%); color: hsl(38 80% 38%); }
+.chip-blush { background: hsl(340 55% 94%); color: hsl(340 45% 42%); }
+.chip-sky { background: hsl(205 70% 93%); color: hsl(205 60% 38%); }
+.chip-mint { background: hsl(170 40% 90%); color: hsl(170 40% 28%); }
+
+.dark .chip-sage { background: hsl(145 25% 18%); color: hsl(145 50% 70%); }
+.dark .chip-coral { background: hsl(15 30% 20%); color: hsl(15 80% 75%); }
+.dark .chip-marigold { background: hsl(38 30% 18%); color: hsl(38 80% 75%); }
+.dark .chip-blush { background: hsl(340 25% 20%); color: hsl(340 60% 78%); }
+.dark .chip-sky { background: hsl(205 30% 20%); color: hsl(205 70% 75%); }
+.dark .chip-mint { background: hsl(170 25% 18%); color: hsl(170 50% 70%); }
+
+.book-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px hsl(var(--foreground) / 0.04);
+}
+.book-card:hover {
+  border-color: hsl(var(--primary) / 0.4);
+  box-shadow: 0 4px 16px hsl(var(--primary) / 0.12);
+}
+.stat-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: 0 2px 8px hsl(var(--foreground) / 0.04);
+}
+.profile-header-bg {
+  background: linear-gradient(135deg, hsl(var(--rose-light) / 0.7) 0%, hsl(var(--secondary) / 0.8) 100%);
+  border-radius: 1.25rem;
+  border: 1px solid hsl(var(--border) / 0.6);
+}
+
+/* ================================================================
+   PHYSICAL 3D OPEN HARDCOVER BOOK SYSTEM
+================================================================ */
+.book-desk-stage {
+  perspective: 2600px;
+  perspective-origin: 50% 48%;
+  transform-style: preserve-3d;
+}
+
+/* Ambient warm library desk lighting spotlight over the book */
+.book-desk-ambience {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book-desk-ambience::before {
+  content: "";
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 130%;
+  background: radial-gradient(ellipse 65% 55% at 50% 45%, hsl(38 75% 55% / 0.09) 0%, transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Heavy antique leather hardcover desk casing extending past the page block */
+.book-hardcover-desk {
+  position: relative;
+  background: radial-gradient(circle at 50% 25%, hsl(345 55% 20%), hsl(340 65% 13%) 55%, hsl(340 70% 8%) 100%);
+  border: 1px solid hsl(38 55% 45% / 0.3);
+  border-radius: 1.5rem;
+  padding: 1rem 1.25rem 1.4rem;
+  box-shadow:
+    0 45px 110px -20px rgba(0, 0, 0, 0.75),
+    0 22px 50px -12px rgba(0, 0, 0, 0.55),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.dark .book-hardcover-desk {
+  background: radial-gradient(circle at 50% 25%, hsl(345 38% 13%), hsl(340 50% 8%) 55%, hsl(260 25% 4%) 100%);
+  border: 1px solid hsl(38 45% 40% / 0.25);
+  box-shadow:
+    0 50px 130px -25px rgba(0, 0, 0, 0.92),
+    0 25px 60px -15px rgba(0, 0, 0, 0.75),
+    inset 0 1px 1px rgba(255, 255, 255, 0.07),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.85);
+}
+
+/* Thick Paper Text Block with visible stacked micro-edges */
+.book-page-block {
+  position: relative;
+  border-radius: 0.85rem;
+  box-shadow:
+    /* Stacked deckle paper edges visible underneath */
+    0 1px 0 0 #f0e7d7,
+    0 2px 0 0 #e8decb,
+    0 3px 0 0 #e0d5be,
+    0 4px 0 0 #d7cbb2,
+    0 5px 0 0 #cfc1a6,
+    0 6px 0 0 #c7b79a,
+    0 7px 0 0 #bfae8f,
+    0 8px 0 0 #b6a383,
+    /* Cast shadow onto leather casing */
+    0 16px 28px -4px rgba(0, 0, 0, 0.55);
+}
+
+.dark .book-page-block {
+  box-shadow:
+    0 1px 0 0 hsl(250 14% 15%),
+    0 2px 0 0 hsl(250 14% 14%),
+    0 3px 0 0 hsl(250 14% 13%),
+    0 4px 0 0 hsl(250 14% 12%),
+    0 5px 0 0 hsl(250 14% 11%),
+    0 6px 0 0 hsl(250 14% 10%),
+    0 7px 0 0 hsl(250 14% 9%),
+    0 8px 0 0 hsl(250 14% 8%),
+    0 18px 32px -4px rgba(0, 0, 0, 0.8);
+}
+
+/* Two-Page Spread Container */
+.book-open-spread {
+  display: flex;
+  position: relative;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Individual Page Wings with Cylindrical Curvature */
+.book-page-wing {
+  flex: 1;
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.75rem 2.25rem 2rem;
+  transition: background 0.3s ease;
+}
+
+/* Left Page: Curved from outer edge dipping toward center crease */
+.book-page-left {
+  background: linear-gradient(
+    to right,
+    #ede5d4 0%,
+    #faf6ee 6%,
+    #fdfbf7 78%,
+    #f1e8d6 95%,
+    #250811 100%
+  );
+  box-shadow: inset -14px 0 22px -8px rgba(0, 0, 0, 0.24);
+  transform-origin: right center;
+  transform: perspective(2200px) rotateY(1.6deg);
+}
+
+.dark .book-page-left {
+  background: linear-gradient(
+    to right,
+    hsl(250 14% 11.5%) 0%,
+    hsl(250 14% 15%) 6%,
+    hsl(250 14% 16%) 78%,
+    hsl(250 14% 10.5%) 95%,
+    hsl(345 50% 6%) 100%
+  );
+  box-shadow: inset -16px 0 26px -8px rgba(0, 0, 0, 0.65);
+  transform-origin: right center;
+  transform: perspective(2200px) rotateY(1.6deg);
+}
+
+/* Right Page: Curved from center crease lifting towards outer edge */
+.book-page-right {
+  background: linear-gradient(
+    to right,
+    #250811 0%,
+    #f1e8d6 5%,
+    #fdfbf7 22%,
+    #faf6ee 94%,
+    #ede5d4 100%
+  );
+  box-shadow: inset 14px 0 22px -8px rgba(0, 0, 0, 0.24);
+  transform-origin: left center;
+  transform: perspective(2200px) rotateY(-1.6deg);
+}
+
+.dark .book-page-right {
+  background: linear-gradient(
+    to right,
+    hsl(345 50% 6%) 0%,
+    hsl(250 14% 10.5%) 5%,
+    hsl(250 14% 16%) 22%,
+    hsl(250 14% 15%) 94%,
+    hsl(250 14% 11.5%) 100%
+  );
+  box-shadow: inset 14px 0 26px -8px rgba(0, 0, 0, 0.65);
+  transform-origin: left center;
+  transform: perspective(2200px) rotateY(-1.6deg);
+}
+
+/* REALISTIC CENTER GUTTER (NO PINK BAR) */
+.book-gutter-valley {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 32px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 15;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.38) 0%,
+    rgba(0, 0, 0, 0.16) 24%,
+    rgba(0, 0, 0, 0.0) 42%,
+    rgba(255, 255, 255, 0.14) 48%,
+    rgba(0, 0, 0, 0.75) 50%,
+    rgba(255, 255, 255, 0.14) 52%,
+    rgba(0, 0, 0, 0.0) 58%,
+    rgba(0, 0, 0, 0.16) 76%,
+    rgba(0, 0, 0, 0.38) 100%
+  );
+}
+
+.dark .book-gutter-valley {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.32) 24%,
+    rgba(0, 0, 0, 0.0) 42%,
+    rgba(255, 255, 255, 0.06) 48%,
+    rgba(0, 0, 0, 0.95) 50%,
+    rgba(255, 255, 255, 0.06) 52%,
+    rgba(0, 0, 0, 0.0) 58%,
+    rgba(0, 0, 0, 0.32) 76%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+/* Silk Ribbon Bookmark hanging naturally from the spine */
+.silk-ribbon-bookmark {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: calc(100% + 48px);
+  background: linear-gradient(
+    to right,
+    hsl(345 65% 34%) 0%,
+    hsl(345 75% 48%) 40%,
+    hsl(345 70% 54%) 60%,
+    hsl(345 65% 32%) 100%
+  );
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 2px 0 6px rgba(0, 0, 0, 0.2);
+  z-index: 25;
+  pointer-events: none;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% calc(100% - 13px), 0% 100%);
+  transition: transform 0.3s ease;
+}
+
+.dark .silk-ribbon-bookmark {
+  background: linear-gradient(
+    to right,
+    hsl(345 55% 28%) 0%,
+    hsl(345 65% 42%) 40%,
+    hsl(345 60% 46%) 60%,
+    hsl(345 55% 26%) 100%
+  );
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Literary Grand Drop Cap */
+.book-drop-cap {
+  float: left;
+  font-size: 3.8rem;
+  line-height: 0.78;
+  margin-right: 0.8rem;
+  margin-top: 0.15rem;
+  margin-bottom: -0.2rem;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: 700;
+  color: hsl(var(--primary));
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+  user-select: none;
+}
+
+/* Interactive Corner Turn Buttons */
+.page-corner-peel-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  z-index: 20;
+}
+.page-corner-peel-right::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 28px 28px 0;
+  border-color: transparent hsl(var(--primary) / 0.25) transparent transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.45;
+  border-bottom-left-radius: 4px;
+}
+.page-corner-peel-right:hover::before {
+  border-width: 0 42px 42px 0;
+  border-color: transparent hsl(var(--primary) / 0.55) transparent transparent;
+  opacity: 0.9;
+  box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.page-corner-peel-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  z-index: 20;
+}
+.page-corner-peel-left::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 28px 28px 0 0;
+  border-color: hsl(var(--primary) / 0.25) transparent transparent transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.45;
+  border-bottom-right-radius: 4px;
+}
+.page-corner-peel-left:hover::before {
+  border-width: 42px 42px 0 0;
+  border-color: hsl(var(--primary) / 0.55) transparent transparent transparent;
+  opacity: 0.9;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 3D Physical Turning Leaf */
+@keyframes physicalTurnNext {
+  0% {
+    transform: rotateY(0deg) translateZ(2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  30% {
+    transform: rotateY(-55deg) translateZ(36px) skewY(-2deg);
+    box-shadow: -16px 12px 35px rgba(0, 0, 0, 0.35);
+  }
+  65% {
+    transform: rotateY(-125deg) translateZ(32px) skewY(2deg);
+    box-shadow: -22px 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    transform: rotateY(-180deg) translateZ(2px);
+    box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@keyframes physicalTurnPrev {
+  0% {
+    transform: rotateY(0deg) translateZ(2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  30% {
+    transform: rotateY(55deg) translateZ(36px) skewY(2deg);
+    box-shadow: 16px 12px 35px rgba(0, 0, 0, 0.35);
+  }
+  65% {
+    transform: rotateY(125deg) translateZ(32px) skewY(-2deg);
+    box-shadow: 22px 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    transform: rotateY(180deg) translateZ(2px);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.leaf-turn-next {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  animation: physicalTurnNext 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.leaf-turn-prev {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  transform-origin: right center;
+  transform-style: preserve-3d;
+  animation: physicalTurnPrev 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* Cover Opening Animation */
+@keyframes bookCoverOpenAnim {
+  0% {
+    transform: rotateY(0deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  }
+  100% {
+    transform: rotateY(-180deg);
+    box-shadow: -20px 20px 40px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.animate-book-cover-open {
+  transform-origin: left center;
+  animation: bookCoverOpenAnim 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  backface-visibility: hidden;
+}
+
+/* Subtle Control Nudge Effects */
+.nav-nudge-left {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-nudge-left:hover:not(:disabled) {
+  transform: translateX(-4px);
+}
+
+.nav-nudge-right {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-nudge-right:hover:not(:disabled) {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leaf-turn-next,
+  .leaf-turn-prev,
+  .animate-book-cover-open {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
